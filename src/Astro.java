@@ -19,6 +19,7 @@ class Astro
 	// Name is always the same as the class
 	Astro(float x, float y, float w,PApplet p)
 	{
+		
 		parent = p;
 		pos = new PVector(x, y);
 		forward = new PVector(0, -1);
