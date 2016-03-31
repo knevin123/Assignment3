@@ -14,14 +14,14 @@ public class Walls {
 		wallpos = new PVector(0, 0);
 		wallpos.y=0;
 		wallpos.x=parent.width;
-		w=parent.random(30,70);
+		w=100;
 		h=parent.random(25,(parent.height/2)-30);
 	
 	}
 	
 	void update()
 	{	
-		wallpos.x--;
+		wallpos.x-=1.5;
 	}
 	
 	void render()
