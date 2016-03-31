@@ -11,10 +11,11 @@ public class Walls {
 	Walls(PApplet p)
 	{
 		parent=p;
+		wallpos = new PVector(0, 0);
 		wallpos.y=0;
 		wallpos.x=parent.width;
 		w=parent.random(30,70);
-		h=parent.random(25,parent.height-30);
+		h=parent.random(25,(parent.height/2)-30);
 	
 	}
 	
