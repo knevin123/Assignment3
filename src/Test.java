@@ -1,10 +1,17 @@
 
+import java.util.ArrayList;
+
 import processing.core.*;
 
 public class Test extends PApplet {
+	
 	Astro astro;
 	Walls test;
 	Bottomwall bottom;
+	
+	ArrayList<Walls> topwalls = new ArrayList<Walls>();
+	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
+	
 	public void setup() 
 	{
 		size(800,800);
@@ -28,9 +35,29 @@ public class Test extends PApplet {
 		background(0);
 	    astro.render();
 	    astro.update();
-	    test.render();
-	    test.update();
-	    bottom.render();
-	    bottom.update();
+	    if (frameCount % 100 == 0)
+	    {
+	    	//initialise top wall
+		    Walls topwall = null;
+		    topwall = new Walls(this);
+		    topwalls.add(topwall);
+		    //initialise bottom wall
+		    Bottomwall bottomwall = null;
+		    bottomwall = new Bottomwall(this);
+		    botwalls.add(bottomwall);
+	    }
+	    for(int i= topwalls.size()-1; i>=0;i--)
+	    {
+	    	Walls go = topwalls.get(i);  
+	        go.update();
+	        go.render();
+	    }
+	    for(int i= botwalls.size()-1; i>=0;i--)
+	    {
+	    	Bottomwall go = botwalls.get(i);  
+	        go.update();
+	        go.render();
+	    }
+	    
 	}
 }
