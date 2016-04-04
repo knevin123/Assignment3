@@ -12,7 +12,7 @@ class Astro
 	float w;
 	float halfW;
 	float speed = 5.0f;
-	int elapsed = 10;
+	int elapsed = 8;
 	
 	// Constructor!!
 	// HAS NO RETURN TYPE
@@ -33,9 +33,9 @@ class Astro
 	{	
 		if (parent.keyPressed)
 		{
-			if (parent.key=='w' && elapsed > 10)
+			if (parent.key=='w' /*&& elapsed > 8*/)
 			{
-				pos.y-=50;
+				pos.y-=10;
 				elapsed = 0;
 			}
 		}
