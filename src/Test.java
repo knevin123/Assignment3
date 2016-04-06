@@ -79,7 +79,9 @@ public class Test extends PApplet {
 	        if(astro.pos.y<go.h)
 	        {
 	        	if(astro.pos.x>go.wallpos.x && astro.pos.x<(go.wallpos.x+go.w))
-	        	ellipse(width/2,height/2,50,50);
+	        	{
+	        		ellipse(width/2,height/2,50,50);
+	        	}
 	        }
 	    }
 	}
@@ -90,7 +92,10 @@ public class Test extends PApplet {
 			Bottomwall go = botwalls.get(i); 
 	        if(astro.pos.y>height-go.h)
 	        {
-	        	rect(width/2,height/2,50,50);
+	        	if(astro.pos.x>go.wallpos.x)
+	        	{
+	        		rect(width/2,height/2,50,50);
+	        	}
 	        }
 	    }
 	}
