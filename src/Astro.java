@@ -50,8 +50,17 @@ class Astro
 	
 	void render()
 	{
-		
-		parent.image(normal,pos.x,pos.y,100,100);
+		if (parent.keyPressed)
+		{
+			if (parent.key=='w')
+			{
+				parent.image(jump,pos.x,pos.y,100,100);
+			}
+		}
+		else
+		{
+			parent.image(normal,pos.x,pos.y,100,100);
+		}
 		
 	} 
 	
