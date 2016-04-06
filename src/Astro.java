@@ -1,5 +1,6 @@
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 class Astro
@@ -13,6 +14,8 @@ class Astro
 	float halfW;
 	float speed = 5.0f;
 	int elapsed = 8;
+	PImage normal;
+	PImage jump;
 	
 	// Constructor!!
 	// HAS NO RETURN TYPE
@@ -25,7 +28,9 @@ class Astro
 		this.w = w; // Disambiguate w by using this
 		this.halfW = w * 0.5f;
 		this.theta = 0.0f;
-		
+		normal=parent.loadImage("sprite1.png");
+		jump=parent.loadImage("sprite2.png");
+				
 	
 	}
 	
@@ -45,15 +50,9 @@ class Astro
 	
 	void render()
 	{
-		parent.pushMatrix();
-		parent.translate(pos.x, pos.y);
-		parent.rotate(theta);
-		parent.stroke(255);
-		parent.line(- halfW, halfW, 0, - halfW);
-		parent.line(0, - halfW, halfW, halfW);
-		parent.line(halfW, halfW, 0, 0);
-		parent.line(- halfW, halfW, 0, 0);
-		parent.popMatrix();
+		
+		parent.image(normal,pos.x,pos.y,100,100);
+		
 	} 
 	
 }

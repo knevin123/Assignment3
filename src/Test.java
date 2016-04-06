@@ -36,8 +36,6 @@ public class Test extends PApplet {
 	public void draw() 
 	{
 		background(0);
-	    astro.render();
-	    astro.update();
 	    if (frameCount % 100 == 0)
 	    {
 	    	//initialise top wall
@@ -55,6 +53,8 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
+	    astro.render();
+	    astro.update();
 	    for(int i= topwalls.size()-1; i>=0;i--)
 	    {
 	    	Walls go = topwalls.get(i);  
@@ -99,6 +99,4 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
-	
-	    
 }
