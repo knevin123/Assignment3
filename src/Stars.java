@@ -5,20 +5,41 @@ public class Stars {
 	PApplet parent;
 	int elapsed=12;
 	int color;
+	float posx;
+	float posy;
+	boolean colchange;
 	Stars(PApplet p)
 	{
 		parent=p;
 		color=255;
+		colchange=true;
+		posy=parent.random(parent.height);
+		posx=parent.random(parent.width);
 	}
 	void update()
-	{
-		color--;
+	{	
+		if(color==0)
+		{
+			colchange=!colchange;
+		}
+		if(color==255)
+		{
+			colchange=!colchange;
+		}
+		if (colchange==false)
+		{
+			color--;
+		}
+		if (colchange==true)
+		{
+			color++;
+		}
 	}
 	void render()
 	{  
 		parent.noStroke();
 		parent.fill(color);
-		parent.ellipse(parent.random(parent.width), parent.random(parent.height), 10, 10);
+		parent.ellipse(posx, posy, 3, 3);
 		
 	}
 }
