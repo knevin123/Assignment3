@@ -39,7 +39,7 @@ class Astro
 				elapsed = 0;
 			}
 		}
-		pos.y+=2;
+		pos.y+=2.5;
 		elapsed ++;
 	}
 	

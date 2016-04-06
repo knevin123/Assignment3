@@ -49,7 +49,12 @@ public class Test extends PApplet {
 		    bottomwall = new Bottomwall(this);
 		    botwalls.add(bottomwall);
 	    }
-	    
+	    for(int i= star.size()-1; i>=0;i--)
+	    {
+	    	Stars go = star.get(i);  
+	        go.update();
+	        go.render();
+	    }
 	    for(int i= topwalls.size()-1; i>=0;i--)
 	    {
 	    	Walls go = topwalls.get(i);  
@@ -63,12 +68,7 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
-	    for(int i= star.size()-1; i>=0;i--)
-	    {
-	    	Stars go = star.get(i);  
-	        go.update();
-	        go.render();
-	    }
+	    
 		
 	    
 	}
