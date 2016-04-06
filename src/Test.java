@@ -69,6 +69,7 @@ public class Test extends PApplet {
 	        go.render();
 	    }
 	    topwalldetect();
+	    bottomwalldetect();
 	}
 	public void topwalldetect()
 	{
@@ -82,5 +83,17 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
+	public void bottomwalldetect()
+	{
+		for(int i= botwalls.size()-1; i>=0;i--)
+	    {
+			Bottomwall go = botwalls.get(i); 
+	        if(astro.pos.y>height-go.h)
+	        {
+	        	rect(width/2,height/2,50,50);
+	        }
+	    }
+	}
+	
 	    
 }
