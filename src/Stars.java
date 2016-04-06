@@ -11,7 +11,7 @@ public class Stars {
 	Stars(PApplet p)
 	{
 		parent=p;
-		color=255;
+		color=(int)parent.random(0,255);
 		colchange=true;
 		posy=parent.random(parent.height);
 		posx=parent.random(parent.width);

@@ -14,7 +14,7 @@ public class Test extends PApplet {
 	{
 		size(800,800);
 		background(0);
-		for(int i=0; i<50;i++)
+		for(int i=0; i<200;i++)
 		{
 			Stars stars = null;
 		    stars = new Stars(this);
@@ -56,19 +56,19 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
-	    for(int i= star.size()-1; i>=0;i--)
-	    {
-	    	Stars go = star.get(i);  
-	        go.update();
-	        go.render();
-	    }
+	    
 	    for(int i= botwalls.size()-1; i>=0;i--)
 	    {
 	    	Bottomwall go = botwalls.get(i);  
 	        go.update();
 	        go.render();
 	    }
-	    
+	    for(int i= star.size()-1; i>=0;i--)
+	    {
+	    	Stars go = star.get(i);  
+	        go.update();
+	        go.render();
+	    }
 		
 	    
 	}
