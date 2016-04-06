@@ -77,7 +77,7 @@ public class Test extends PApplet {
 	    	Walls go = topwalls.get(i);  
 	        if(astro.pos.y<go.h)
 	        {
-	        	if(astro.pos.x>go.wallpos.x)
+	        	if(astro.pos.x>go.wallpos.x && astro.pos.x<(go.wallpos.x+go.w))
 	        	ellipse(width/2,height/2,50,50);
 	        }
 	    }
