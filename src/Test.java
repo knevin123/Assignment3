@@ -104,7 +104,7 @@ public class Test extends PApplet {
 			Bottomwall go = botwalls.get(i); 
 	        if(astro.pos.y+astro.w>height-go.h)
 	        {
-	        	if(astro.pos.x>go.wallpos.x && astro.pos.x<(go.wallpos.x)+go.w)
+	        	if(astro.pos.x-astro.w/2>go.wallpos.x && astro.pos.x-astro.w/2<(go.wallpos.x)+go.w || astro.pos.x+astro.w/2-15>go.wallpos.x && astro.pos.x+astro.w/2-15<(go.wallpos.x)+go.w)
 	        	{
 	        		rect(width/2,height/2,50,50);
 	        	}
