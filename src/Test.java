@@ -20,7 +20,14 @@ public class Test extends PApplet {
 		    stars = new Stars(this);
 		    star.add(stars);
 		}
-		astro = new Astro(width/2, height/2, 50, this);
+		astro = new Astro(width/2, height/2, 100, this);
+		Walls topwall = null;
+	    topwall = new Walls(this);
+	    topwalls.add(topwall);
+	    //initialise bottom wall
+	    Bottomwall bottomwall = null;
+	    bottomwall = new Bottomwall(this);
+	    botwalls.add(bottomwall);
 	}
 	boolean[] keys = new boolean[512];
 
@@ -36,6 +43,7 @@ public class Test extends PApplet {
 	public void draw() 
 	{
 		background(0);
+		/*
 	    if (frameCount % 100 == 0)
 	    {
 	    	//initialise top wall
@@ -47,6 +55,10 @@ public class Test extends PApplet {
 		    bottomwall = new Bottomwall(this);
 		    botwalls.add(bottomwall);
 	    }
+	    */
+		//initialise top wall
+		
+	    
 	    for(int i= star.size()-1; i>=0;i--)
 	    {
 	    	Stars go = star.get(i);  
@@ -78,7 +90,7 @@ public class Test extends PApplet {
 	    	Walls go = topwalls.get(i);  
 	        if(astro.pos.y<go.h)
 	        {
-	        	if(astro.pos.x>go.wallpos.x && astro.pos.x<(go.wallpos.x+go.w))
+	        	if((astro.pos.x+astro.w/2-10)>go.wallpos.x  && (astro.pos.x+astro.w/2-10)<(go.wallpos.x+go.w) || (astro.pos.x-astro.w/2+5)>go.wallpos.x  && (astro.pos.x-astro.w/2+5)<(go.wallpos.x+go.w))
 	        	{
 	        		ellipse(width/2,height/2,50,50);
 	        	}
@@ -90,7 +102,7 @@ public class Test extends PApplet {
 		for(int i= botwalls.size()-1; i>=0;i--)
 	    {
 			Bottomwall go = botwalls.get(i); 
-	        if(astro.pos.y>height-go.h)
+	        if(astro.pos.y+astro.w>height-go.h)
 	        {
 	        	if(astro.pos.x>go.wallpos.x && astro.pos.x<(go.wallpos.x)+go.w)
 	        	{

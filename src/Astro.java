@@ -54,12 +54,12 @@ class Astro
 		{
 			if (parent.key=='w')
 			{
-				parent.image(jump,pos.x,pos.y,100,100);
+				parent.image(jump,pos.x-(w/2),pos.y,w,w);
 			}
 		}
 		else
 		{
-			parent.image(normal,pos.x,pos.y,100,100);
+			parent.image(normal,pos.x-(w/2),pos.y,w,w);
 		}
 		
 	} 
