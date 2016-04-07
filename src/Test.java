@@ -6,6 +6,7 @@ import processing.core.*;
 public class Test extends PApplet {
 	
 	Astro astro;
+	speedPowerup speed;
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
@@ -21,6 +22,7 @@ public class Test extends PApplet {
 		    star.add(stars);
 		}
 		astro = new Astro(width/2, height/2, 100, this);
+		speed= new speedPowerup(this);
 	}
 	boolean[] keys = new boolean[512];
 
@@ -59,6 +61,7 @@ public class Test extends PApplet {
 	    }
 	    astro.render();
 	    astro.update();
+	    speed.render();
 	    for(int i= topwalls.size()-1; i>=0;i--)
 	    {
 	    	Walls go = topwalls.get(i);  
