@@ -21,13 +21,6 @@ public class Test extends PApplet {
 		    star.add(stars);
 		}
 		astro = new Astro(width/2, height/2, 100, this);
-		Walls topwall = null;
-	    topwall = new Walls(this);
-	    topwalls.add(topwall);
-	    //initialise bottom wall
-	    Bottomwall bottomwall = null;
-	    bottomwall = new Bottomwall(this);
-	    botwalls.add(bottomwall);
 	}
 	boolean[] keys = new boolean[512];
 
@@ -43,7 +36,7 @@ public class Test extends PApplet {
 	public void draw() 
 	{
 		background(0);
-		/*
+		
 	    if (frameCount % 100 == 0)
 	    {
 	    	//initialise top wall
@@ -55,8 +48,7 @@ public class Test extends PApplet {
 		    bottomwall = new Bottomwall(this);
 		    botwalls.add(bottomwall);
 	    }
-	    */
-		//initialise top wall
+	    
 		
 	    
 	    for(int i= star.size()-1; i>=0;i--)

@@ -15,7 +15,7 @@ public class Bottomwall {
 			wallpos.y=parent.height;
 			wallpos.x=parent.width;
 			w=100;
-			h=parent.random(25,(parent.height/2)-30);
+			h=parent.random(25,(parent.height/2)-75);
 		
 		}
 		
