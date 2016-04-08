@@ -8,6 +8,7 @@ public class Test extends PApplet {
 	Astro astro;
 	speedPowerup speed;
 	Startmenu start;
+	Endmenu end;
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
@@ -27,6 +28,7 @@ public class Test extends PApplet {
 		}
 		astro = new Astro(width/2, height/2, 100, this);
 		start = new Startmenu(this);
+		end = new Endmenu(this);
 	}
 	boolean[] keys = new boolean[512];
 
@@ -59,6 +61,14 @@ public class Test extends PApplet {
 	    if(state==2)
 	    {
 	    	game();
+	    	if(astro.fuel==0)
+	    	{
+	    		state=3;
+	    	}
+	    }
+	    if(state==3)
+	    {
+	    	endmenu();
 	    }
 	    
 	    
@@ -95,6 +105,11 @@ public class Test extends PApplet {
 	{
 		start.render();
 	    start.update();
+	}
+	public void endmenu()
+	{
+		end.render();
+		end.update();
 	}
 	public void game()
 	{
