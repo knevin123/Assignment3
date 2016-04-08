@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
@@ -14,6 +16,7 @@ class Astro
 	float halfW;
 	float speed = 5.0f;
 	float fuel;
+	int c;
 	int elapsed = 8;
 	PImage normal;
 	PImage jump;
@@ -32,6 +35,7 @@ class Astro
 		fuel=100;
 		normal=parent.loadImage("sprite1.png");
 		jump=parent.loadImage("sprite2.png");
+		c=parent.color(0,255,0);
 				
 	
 	}
@@ -65,7 +69,7 @@ class Astro
 	} 
 	void fuel()
 	{
-		parent.fill(0,255,0);
+		parent.fill(c);
 		parent.rect(pos.x-w/2, pos.y-w/3, fuel, 20);
 	}
 	
