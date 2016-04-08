@@ -93,7 +93,7 @@ class Astro
 		parent.fill(c);
 		if(fuel>0)
 		{
-			parent.rect(pos.x-w/2, pos.y-w/3, fuel, 20);
+			parent.rect((float) (pos.x-w/1.5), pos.y+w-10,10,-fuel);
 		}
 	}
 }
