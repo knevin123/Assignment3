@@ -69,9 +69,32 @@ class Astro
 	} 
 	void fuel()
 	{
+		if(fuel<20)
+		{
+			c=parent.color(245,85,30);
+		}
+		if(fuel>20 && fuel<40)
+		{
+			c=parent.color(242,151,31);
+		}
+		if(fuel>20 && fuel<40)
+		{
+			c=parent.color(227,167,2);
+		}
+		if(fuel>40 && fuel<70)
+		{
+			c=parent.color(227,219,2);
+		}
+		if(fuel>70)
+		{
+			c=parent.color(170,232,37);
+		}
+		
 		parent.fill(c);
-		parent.rect(pos.x-w/2, pos.y-w/3, fuel, 20);
+		if(fuel>0)
+		{
+			parent.rect(pos.x-w/2, pos.y-w/3, fuel, 20);
+		}
 	}
-	
 }
 
