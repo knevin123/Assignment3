@@ -95,6 +95,7 @@ public class Test extends PApplet {
 //	    topwalldetect();
 //	    bottomwalldetect();
 	    start.render();
+	    start.update();
 	}
 	public void topwalldetect()
 	{
