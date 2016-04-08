@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class speedPowerup {
@@ -6,22 +7,18 @@ public class speedPowerup {
 	PVector pos;
 	int w;
 	int h;
+	PImage speed;
 	speedPowerup(PApplet p)
 	{
 		parent=p;
-		pos = new PVector(parent.width/2, parent.height/2);
-		w=30;
-		h=45;
+		w=50;
+		h=90;
+		pos = new PVector((parent.width/2-(w/2)), (parent.height/2-(h/2)));
+		speed=parent.loadImage("speed.png");
 	}
 	void render() 
 	{
-		parent.stroke(0,0,255);
-		parent.line(pos.x,pos.y,pos.x+w,pos.y-h);
-		parent.line(pos.x+w,pos.y-h,pos.x+w/2,pos.y-10);
-		parent.line(pos.x+w/2,pos.y-10,pos.x+w,pos.y-10);
-		parent.line(pos.x+w,pos.y-10,pos.x,(float) (pos.y+h/1.5));
-		parent.line(pos.x,(float) (pos.y+h/1.5),pos.x+w/2,pos.y);
-		parent.line(pos.x+w/2,pos.y,pos.x,pos.y);
+		parent.image(speed, pos.x,pos.y,w, h);
 
 	}
 	void update()

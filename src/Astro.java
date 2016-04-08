@@ -57,10 +57,8 @@ class Astro
 				parent.image(jump,pos.x-(w/2),pos.y,w,w);
 			}
 		}
-		else
-		{
-			parent.image(normal,pos.x-(w/2),pos.y,w,w);
-		}
+		parent.image(normal,pos.x-(w/2),pos.y,w,w);
+		
 		
 	} 
 	
