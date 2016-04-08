@@ -13,6 +13,7 @@ class Astro
 	float w;
 	float halfW;
 	float speed = 5.0f;
+	float fuel;
 	int elapsed = 8;
 	PImage normal;
 	PImage jump;
@@ -28,6 +29,7 @@ class Astro
 		this.w = w; // Disambiguate w by using this
 		this.halfW = w * 0.5f;
 		this.theta = 0.0f;
+		fuel=100;
 		normal=parent.loadImage("sprite1.png");
 		jump=parent.loadImage("sprite2.png");
 				
@@ -61,6 +63,11 @@ class Astro
 		
 		
 	} 
+	void fuel()
+	{
+		parent.fill(0,255,0);
+		parent.rect(pos.x-w/2, pos.y-w/3, fuel, 20);
+	}
 	
 }
 

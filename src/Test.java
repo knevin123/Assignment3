@@ -10,7 +10,7 @@ public class Test extends PApplet {
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
-	
+	ArrayList<speedPowerup> speeds = new ArrayList<speedPowerup>();
 	public void setup() 
 	{
 		size(800,800);
@@ -22,7 +22,6 @@ public class Test extends PApplet {
 		    star.add(stars);
 		}
 		astro = new Astro(width/2, height/2, 100, this);
-		speed= new speedPowerup(this);
 	}
 	boolean[] keys = new boolean[512];
 
@@ -50,7 +49,14 @@ public class Test extends PApplet {
 		    bottomwall = new Bottomwall(this);
 		    botwalls.add(bottomwall);
 	    }
-	    
+	    if (frameCount % 600 == 0)
+	    {
+	    	//initialise speedPowerup
+	    	speedPowerup speed = null;
+		    speed = new speedPowerup(this);
+		    speeds.add(speed);
+		    
+	    }
 		
 	    
 	    for(int i= star.size()-1; i>=0;i--)
@@ -59,10 +65,16 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
+	    for(int i= speeds.size()-1; i>=0;i--)
+	    {
+	    	speedPowerup go = speeds.get(i);  
+	        go.update();
+	        go.render();
+	    }
 	    astro.render();
 	    astro.update();
-	    speed.render();
-	    speed.update();
+	    astro.fuel();
+	    
 	    for(int i= topwalls.size()-1; i>=0;i--)
 	    {
 	    	Walls go = topwalls.get(i);  

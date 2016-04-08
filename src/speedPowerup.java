@@ -30,11 +30,11 @@ public class speedPowerup {
 		PApplet.println(parent.height/2-50);
 		PApplet.println(up);
 
-		if(pos.y<parent.height/2-100)
+		if(pos.y<parent.height/2-200)
 		{
 			up=false;
 		}
-		if(pos.y>parent.height/2+100)
+		if(pos.y>parent.height/2+200)
 		{
 			up=true;
 		}
