@@ -7,7 +7,7 @@ public class Walls {
 	float w;
 	float h;
 	PVector wallpos;
-	
+	float speed;
 	Walls(PApplet p)
 	{
 		parent=p;
@@ -15,13 +15,14 @@ public class Walls {
 		wallpos.y=0;
 		wallpos.x=parent.width;
 		w=100;
+		speed=(float) 1.5;
 		h=parent.random(25,(parent.height/2)-75);
 	
 	}
 	
 	void update()
 	{	
-		wallpos.x-=1.5;
+		wallpos.x-=speed;
 	}
 	
 	void render()

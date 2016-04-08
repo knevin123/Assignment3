@@ -62,6 +62,7 @@ public class Test extends PApplet {
 	    astro.render();
 	    astro.update();
 	    speed.render();
+	    speed.update();
 	    for(int i= topwalls.size()-1; i>=0;i--)
 	    {
 	    	Walls go = topwalls.get(i);  
