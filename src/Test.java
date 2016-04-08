@@ -39,63 +39,14 @@ public class Test extends PApplet {
 	public void draw() 
 	{
 		background(0);
-//	    if (frameCount % 100 == 0)
-//	    {
-//	    	//initialise top wall
-//		    Walls topwall = null;
-//		    topwall = new Walls(this);
-//		    topwalls.add(topwall);
-//		    //initialise bottom wall
-//		    Bottomwall bottomwall = null;
-//		    bottomwall = new Bottomwall(this);
-//		    botwalls.add(bottomwall);
-//	    }
-//	    if (frameCount % 600 == 0)
-//	    {
-//	    	//initialise speedPowerup
-//	    	speedPowerup speed = null;
-//		    speed = new speedPowerup(this);
-//		    speeds.add(speed);
-//		    
-//	    }
-//		if(frameCount % 25 == 0)
-//		{
-//			astro.fuel-=2;
-//		}
-//	    
 	    for(int i= star.size()-1; i>=0;i--)
 	    {
 	    	Stars go = star.get(i);  
 	        go.update();
 	        go.render();
 	    }
-//	    for(int i= speeds.size()-1; i>=0;i--)
-//	    {
-//	    	speedPowerup go = speeds.get(i);  
-//	        go.update();
-//	        go.render();
-//	    }
-//	    astro.render();
-//	    astro.update();
-//	    astro.fuel();
-//	    
-//	    for(int i= topwalls.size()-1; i>=0;i--)
-//	    {
-//	    	Walls go = topwalls.get(i);  
-//	        go.update();
-//	        go.render();
-//	    }
-//	    
-//	    for(int i= botwalls.size()-1; i>=0;i--)
-//	    {
-//	    	Bottomwall go = botwalls.get(i);  
-//	        go.update();
-//	        go.render();
-//	    }
-//	    topwalldetect();
-//	    bottomwalldetect();
-	    start.render();
-	    start.update();
+	    game();
+	    
 	}
 	public void topwalldetect()
 	{
@@ -125,4 +76,59 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
+	
+	public void game()
+	{
+
+	    if (frameCount % 100 == 0)
+	    {
+	    	//initialise top wall
+		    Walls topwall = null;
+		    topwall = new Walls(this);
+		    topwalls.add(topwall);
+		    //initialise bottom wall
+		    Bottomwall bottomwall = null;
+		    bottomwall = new Bottomwall(this);
+		    botwalls.add(bottomwall);
+	    }
+	    if (frameCount % 600 == 0)
+	    {
+	    	//initialise speedPowerup
+	    	speedPowerup speed = null;
+		    speed = new speedPowerup(this);
+		    speeds.add(speed);
+		    
+	    }
+		if(frameCount % 25 == 0)
+		{
+			astro.fuel-=2;
+		}
+	    
+	    for(int i= speeds.size()-1; i>=0;i--)
+	    {
+	    	speedPowerup go = speeds.get(i);  
+	        go.update();
+	        go.render();
+	    }
+	    astro.render();
+	    astro.update();
+	    astro.fuel();
+	    
+	    for(int i= topwalls.size()-1; i>=0;i--)
+	    {
+	    	Walls go = topwalls.get(i);  
+	        go.update();
+	        go.render();
+	    }
+	    
+	    for(int i= botwalls.size()-1; i>=0;i--)
+	    {
+	    	Bottomwall go = botwalls.get(i);  
+	        go.update();
+	        go.render();
+	    }
+	    topwalldetect();
+	    bottomwalldetect();
+	}
+	
 }
