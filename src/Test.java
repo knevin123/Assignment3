@@ -12,10 +12,13 @@ public class Test extends PApplet {
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
 	ArrayList<speedPowerup> speeds = new ArrayList<speedPowerup>();
+	//int for game state 1=startmenu 2=game 3=restart menu
+	int state;
 	public void setup() 
 	{
 		size(800,800);
 		background(0);
+		state=1;
 		for(int i=0; i<200;i++)
 		{
 			Stars stars = null;
@@ -45,7 +48,19 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
-	    game();
+	    if(state==1)
+	    {
+	    	startmenu();
+	    	if(keyPressed)
+	    	{
+	    		state=2;
+	    	}
+	    }
+	    if(state==2)
+	    {
+	    	game();
+	    }
+	    
 	    
 	}
 	public void topwalldetect()
@@ -76,7 +91,11 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
-	
+	public void startmenu()
+	{
+		start.render();
+	    start.update();
+	}
 	public void game()
 	{
 
