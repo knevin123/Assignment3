@@ -57,7 +57,10 @@ public class Test extends PApplet {
 		    speeds.add(speed);
 		    
 	    }
-		
+		if(frameCount % 25 == 0)
+		{
+			astro.fuel-=2;
+		}
 	    
 	    for(int i= star.size()-1; i>=0;i--)
 	    {
