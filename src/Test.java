@@ -7,6 +7,7 @@ public class Test extends PApplet {
 	
 	Astro astro;
 	speedPowerup speed;
+	Startmenu start;
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
@@ -22,6 +23,7 @@ public class Test extends PApplet {
 		    star.add(stars);
 		}
 		astro = new Astro(width/2, height/2, 100, this);
+		start = new Startmenu(this);
 	}
 	boolean[] keys = new boolean[512];
 
@@ -37,62 +39,62 @@ public class Test extends PApplet {
 	public void draw() 
 	{
 		background(0);
-		
-	    if (frameCount % 100 == 0)
-	    {
-	    	//initialise top wall
-		    Walls topwall = null;
-		    topwall = new Walls(this);
-		    topwalls.add(topwall);
-		    //initialise bottom wall
-		    Bottomwall bottomwall = null;
-		    bottomwall = new Bottomwall(this);
-		    botwalls.add(bottomwall);
-	    }
-	    if (frameCount % 600 == 0)
-	    {
-	    	//initialise speedPowerup
-	    	speedPowerup speed = null;
-		    speed = new speedPowerup(this);
-		    speeds.add(speed);
-		    
-	    }
-		if(frameCount % 25 == 0)
-		{
-			astro.fuel-=2;
-		}
-	    
+//	    if (frameCount % 100 == 0)
+//	    {
+//	    	//initialise top wall
+//		    Walls topwall = null;
+//		    topwall = new Walls(this);
+//		    topwalls.add(topwall);
+//		    //initialise bottom wall
+//		    Bottomwall bottomwall = null;
+//		    bottomwall = new Bottomwall(this);
+//		    botwalls.add(bottomwall);
+//	    }
+//	    if (frameCount % 600 == 0)
+//	    {
+//	    	//initialise speedPowerup
+//	    	speedPowerup speed = null;
+//		    speed = new speedPowerup(this);
+//		    speeds.add(speed);
+//		    
+//	    }
+//		if(frameCount % 25 == 0)
+//		{
+//			astro.fuel-=2;
+//		}
+//	    
 	    for(int i= star.size()-1; i>=0;i--)
 	    {
 	    	Stars go = star.get(i);  
 	        go.update();
 	        go.render();
 	    }
-	    for(int i= speeds.size()-1; i>=0;i--)
-	    {
-	    	speedPowerup go = speeds.get(i);  
-	        go.update();
-	        go.render();
-	    }
-	    astro.render();
-	    astro.update();
-	    astro.fuel();
-	    
-	    for(int i= topwalls.size()-1; i>=0;i--)
-	    {
-	    	Walls go = topwalls.get(i);  
-	        go.update();
-	        go.render();
-	    }
-	    
-	    for(int i= botwalls.size()-1; i>=0;i--)
-	    {
-	    	Bottomwall go = botwalls.get(i);  
-	        go.update();
-	        go.render();
-	    }
-	    topwalldetect();
-	    bottomwalldetect();
+//	    for(int i= speeds.size()-1; i>=0;i--)
+//	    {
+//	    	speedPowerup go = speeds.get(i);  
+//	        go.update();
+//	        go.render();
+//	    }
+//	    astro.render();
+//	    astro.update();
+//	    astro.fuel();
+//	    
+//	    for(int i= topwalls.size()-1; i>=0;i--)
+//	    {
+//	    	Walls go = topwalls.get(i);  
+//	        go.update();
+//	        go.render();
+//	    }
+//	    
+//	    for(int i= botwalls.size()-1; i>=0;i--)
+//	    {
+//	    	Bottomwall go = botwalls.get(i);  
+//	        go.update();
+//	        go.render();
+//	    }
+//	    topwalldetect();
+//	    bottomwalldetect();
+	    start.render();
 	}
 	public void topwalldetect()
 	{
