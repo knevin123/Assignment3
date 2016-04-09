@@ -6,13 +6,13 @@ import processing.core.*;
 public class Test extends PApplet {
 	
 	Astro astro;
-	speedPowerup speed;
 	Startmenu start;
 	Endmenu end;
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
 	ArrayList<speedPowerup> speeds = new ArrayList<speedPowerup>();
+	ArrayList<Fuelpowerup> fuels = new ArrayList<Fuelpowerup>();
 	//int for game state 1=startmenu 2=game 3=restart menu
 	int state;
 	int count;
@@ -183,6 +183,14 @@ public class Test extends PApplet {
 		    bottomwall = new Bottomwall(this,wallspeed);
 		    botwalls.add(bottomwall);
 	    }
+	    if (frameCount % 100 == 0)
+	    {
+	    	//initialise speedPowerup
+	    	Fuelpowerup fuel = null;
+		    fuel = new Fuelpowerup(this);
+		    fuels.add(fuel);
+		    
+	    }
 	    if (frameCount % 600 == 0)
 	    {
 	    	//initialise speedPowerup
@@ -193,12 +201,18 @@ public class Test extends PApplet {
 	    }
 		if(frameCount % 25 == 0)
 		{
-			astro.fuel-=2;
+			astro.fuel-=3;
 		}
 	    
 	    for(int i= speeds.size()-1; i>=0;i--)
 	    {
 	    	speedPowerup go = speeds.get(i);  
+	        go.update();
+	        go.render();
+	    }
+	    for(int i= fuels.size()-1; i>=0;i--)
+	    {
+	    	Fuelpowerup go = fuels.get(i);  
 	        go.update();
 	        go.render();
 	    }
