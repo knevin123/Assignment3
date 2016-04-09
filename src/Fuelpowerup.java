@@ -25,24 +25,24 @@ public class Fuelpowerup {
 	}
 	void update()
 	{
-		pos.x-=2;
+		pos.x-=1.5;
 
-		if(pos.y<parent.height/2-200)
+		if(pos.y<0)
 		{
 			up=false;
 		}
-		if(pos.y>parent.height/2+200)
+		if(pos.y>parent.height)
 		{
 			up=true;
 		}
 		
 		if(up==true)
 		{
-			pos.y-=4;
+			pos.y-=6;
 		}
 		else
 		{
-			pos.y+=4;
+			pos.y+=6;
 		}
 	}
 
