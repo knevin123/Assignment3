@@ -15,11 +15,13 @@ public class Test extends PApplet {
 	ArrayList<speedPowerup> speeds = new ArrayList<speedPowerup>();
 	//int for game state 1=startmenu 2=game 3=restart menu
 	int state;
+	float wallspeed;
 	public void setup() 
 	{
 		size(800,800);
 		background(0);
 		state=1;
+		wallspeed=(float) 1.5;
 		for(int i=0; i<200;i++)
 		{
 			Stars stars = null;
@@ -101,7 +103,30 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
-	
+	public void speeddetect()
+	{
+		for(int i= speeds.size()-1; i>=0;i--)
+	    {
+	    	speedPowerup go = speeds.get(i);  
+	        if(astro.pos.y<go.pos.y+(go.h/2) && astro.pos.y>go.pos.y-(go.h/2))
+	        {
+	        	if((astro.pos.x+astro.w/2-10)>go.pos.x  && (astro.pos.x+astro.w/2-10)<(go.pos.x+go.w) || (astro.pos.x-astro.w/2+5)>go.pos.x  && (astro.pos.x-astro.w/2+5)<(go.pos.x+go.w))
+	        	{
+	        		//change wall speeds
+	        		for(int j= topwalls.size()-1; j>=0;j--)
+	        	    {
+	        	    	Walls go1 = topwalls.get(j);  
+	        	        go1.speed=3;
+	        	    }
+	        		for(int j= botwalls.size()-1; j>=0;j--)
+	        	    {
+	        			Bottomwall go2 = botwalls.get(j); 
+	        	        go2.speed=3;
+	        	    }
+	        	}
+	        }
+	    }
+	}
 	public void startmenu()
 	{
 		start.render();
@@ -119,11 +144,11 @@ public class Test extends PApplet {
 	    {
 	    	//initialise top wall
 		    Walls topwall = null;
-		    topwall = new Walls(this);
+		    topwall = new Walls(this,wallspeed);
 		    topwalls.add(topwall);
 		    //initialise bottom wall
 		    Bottomwall bottomwall = null;
-		    bottomwall = new Bottomwall(this);
+		    bottomwall = new Bottomwall(this,wallspeed);
 		    botwalls.add(bottomwall);
 	    }
 	    if (frameCount % 600 == 0)
@@ -164,6 +189,7 @@ public class Test extends PApplet {
 	    }
 	    topwalldetect();
 	    bottomwalldetect();
+	    speeddetect();
 	}
 	
 	

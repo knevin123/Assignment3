@@ -26,9 +26,6 @@ public class speedPowerup {
 	void update()
 	{
 		pos.x-=2;
-		PApplet.println(pos.y);
-		PApplet.println(parent.height/2-50);
-		PApplet.println(up);
 
 		if(pos.y<parent.height/2-200)
 		{
