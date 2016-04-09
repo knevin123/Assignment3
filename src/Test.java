@@ -70,7 +70,7 @@ public class Test extends PApplet {
 	    if(state==2)
 	    {
 	    	game();
-	    	if(astro.fuel==0)
+	    	if(astro.fuel<0)
 	    	{
 	    		state=3;
 	    	}
@@ -132,7 +132,7 @@ public class Test extends PApplet {
 	        		for(int j= botwalls.size()-1; j>=0;j--)
 	        	    {
 	        			Bottomwall go2 = botwalls.get(j); 
-	        	        go2.speed=5;
+	        	        go2.speed=3;
 	        	    }
 	        		
 	        	}
@@ -209,7 +209,7 @@ public class Test extends PApplet {
 	    }
 		if(frameCount % 25 == 0)
 		{
-			astro.fuel-=5;
+			astro.fuel-=3;
 		}
 	    
 	    for(int i= speeds.size()-1; i>=0;i--)
