@@ -110,6 +110,22 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
+	public void fueldetect()
+	{
+		for(int i= fuels.size()-1; i>=0;i--)
+	    {
+	    	Fuelpowerup go = fuels.get(i);  
+	        if(go.pos.y<astro.pos.y+astro.w/2 && go.pos.y>astro.pos.y-astro.w/2)
+	        {
+	        	if(go.pos.x<astro.pos.x+astro.w/2 && go.pos.y>astro.pos.x-astro.w/2)
+	        	{
+	        		astro.fuel+=100;
+	        		fuels.remove(go);
+	        	}
+	        
+	        }
+	    }
+	}
 	public void speeddetect()
 	{
 		for(int i= speeds.size()-1; i>=0;i--)
@@ -244,6 +260,7 @@ public class Test extends PApplet {
 	    topwalldetect();
 	    bottomwalldetect();
 	    speeddetect();
+	    fueldetect();
 	}
 	
 	
