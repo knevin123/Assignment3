@@ -9,13 +9,15 @@ public class Fuelpowerup {
 	int h;
 	PImage fuel;
 	boolean up;
-	Fuelpowerup(PApplet p)
+	float speed;
+	Fuelpowerup(PApplet p,float y,float x)
 	{
 		parent=p;
 		w=30;
 		h=50;
+		speed=x;
 		up=true;
-		pos = new PVector((parent.width), (parent.height/2-(h/2)));
+		pos = new PVector((parent.width), y);
 		fuel=parent.loadImage("fuel.png");
 	}
 	void render() 
@@ -25,25 +27,7 @@ public class Fuelpowerup {
 	}
 	void update()
 	{
-		pos.x-=1.5;
-
-		if(pos.y<0)
-		{
-			up=false;
-		}
-		if(pos.y>parent.height)
-		{
-			up=true;
-		}
-		
-		if(up==true)
-		{
-			pos.y-=6;
-		}
-		else
-		{
-			pos.y+=6;
-		}
+		pos.x-=speed;
 	}
 
 }
