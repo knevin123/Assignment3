@@ -82,7 +82,7 @@ public class Test extends PApplet {
 	        {
 	        	if((astro.pos.x+astro.w/2-10)>go.wallpos.x  && (astro.pos.x+astro.w/2-10)<(go.wallpos.x+go.w) || (astro.pos.x-astro.w/2+5)>go.wallpos.x  && (astro.pos.x-astro.w/2+5)<(go.wallpos.x+go.w))
 	        	{
-	        		ellipse(width/2,height/2,50,50);
+	        		astro.fuel=0;
 	        	}
 	        }
 	    }
@@ -96,11 +96,12 @@ public class Test extends PApplet {
 	        {
 	        	if(astro.pos.x-astro.w/2>go.wallpos.x && astro.pos.x-astro.w/2<(go.wallpos.x)+go.w || astro.pos.x+astro.w/2-15>go.wallpos.x && astro.pos.x+astro.w/2-15<(go.wallpos.x)+go.w)
 	        	{
-	        		rect(width/2,height/2,50,50);
+	        		astro.fuel=0;        	
 	        	}
 	        }
 	    }
 	}
+	
 	public void startmenu()
 	{
 		start.render();
@@ -164,5 +165,6 @@ public class Test extends PApplet {
 	    topwalldetect();
 	    bottomwalldetect();
 	}
+	
 	
 }
