@@ -1,6 +1,4 @@
 
-import java.awt.Color;
-
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;

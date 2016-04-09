@@ -113,6 +113,8 @@ public class Test extends PApplet {
 	        	if((astro.pos.x+astro.w/2-10)>go.pos.x  && (astro.pos.x+astro.w/2-10)<(go.pos.x+go.w) || (astro.pos.x-astro.w/2+5)>go.pos.x  && (astro.pos.x-astro.w/2+5)<(go.pos.x+go.w))
 	        	{
 	        		//change wall speeds
+	        		speeds.remove(go);
+	        		wallspeed=3;
 	        		for(int j= topwalls.size()-1; j>=0;j--)
 	        	    {
 	        	    	Walls go1 = topwalls.get(j);  
