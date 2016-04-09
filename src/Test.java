@@ -122,6 +122,7 @@ public class Test extends PApplet {
 	        		change=true;
 	        		speeds.remove(go);
 	        		wallspeed=3;
+	        		wallspawn=50;
 	        		for(int j= topwalls.size()-1; j>=0;j--)
 	        	    {
 	        	    	Walls go1 = topwalls.get(j);  
@@ -152,6 +153,7 @@ public class Test extends PApplet {
         	        go2.speed=(float) 1.5;
         	    }
         		wallspeed=(float) 1.5;
+        		wallspawn=100;
         		change=false;
         		count=0;
 			}
