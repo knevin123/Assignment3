@@ -119,7 +119,7 @@ public class Test extends PApplet {
 	        {
 	        	if(go.pos.x<astro.pos.x+astro.w/2 && go.pos.y>astro.pos.x-astro.w/2)
 	        	{
-	        		astro.fuel+=100;
+	        		astro.fuel+=25;
 	        		fuels.remove(go);
 	        	}
 	        

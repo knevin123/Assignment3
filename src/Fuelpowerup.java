@@ -13,8 +13,8 @@ public class Fuelpowerup {
 	Fuelpowerup(PApplet p,float y,float x)
 	{
 		parent=p;
-		w=30;
-		h=50;
+		w=25;
+		h=40;
 		speed=x;
 		up=true;
 		pos = new PVector((parent.width), y);
