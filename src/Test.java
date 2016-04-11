@@ -181,6 +181,11 @@ public class Test extends PApplet {
 	        			Bottomwall go2 = botwalls.get(j); 
 	        	        go2.speed=3;
 	        	    }
+	        		for(int j= fuels.size()-1; j>=0;j--)
+	        		{
+	        			Fuelpowerup go3 = fuels.get(j);
+	        			go3.speed=3;
+	        		}
 	        		
 	        	}
 	        }
@@ -200,6 +205,11 @@ public class Test extends PApplet {
         			Bottomwall go2 = botwalls.get(j); 
         	        go2.speed=(float) 1.5;
         	    }
+        		for(int j= fuels.size()-1; j>=0;j--)
+        		{
+        			Fuelpowerup go3 = fuels.get(j);
+        			go3.speed=(float) 1.5;
+        		}
         		wallspeed=(float) 1.5;
         		wallspawn=100;
         		change=false;
@@ -219,8 +229,8 @@ public class Test extends PApplet {
 	}
 	public void game()
 	{
-		//topwalldetect();
-	    //bottomwalldetect();
+		topwalldetect();
+	    bottomwalldetect();
 	    speeddetect();
 	    fueldetect();
 	    lightdetect();

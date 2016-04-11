@@ -30,7 +30,7 @@ class Astro
 		this.w = w; // Disambiguate w by using this
 		this.halfW = w * 0.5f;
 		this.theta = 0.0f;
-		fuel=1000;
+		fuel=100;
 		normal=parent.loadImage("sprite1.png");
 		jump=parent.loadImage("sprite2.png");
 		c=parent.color(0,255,0);
