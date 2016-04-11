@@ -2,21 +2,21 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
-public class SpeedPowerup {
+public class Light {
 	PApplet parent;
 	PVector pos;
 	int w;
 	int h;
 	PImage speed;
 	boolean up;
-	SpeedPowerup(PApplet p)
+	Light(PApplet p)
 	{
 		parent=p;
-		w=50;
-		h=80;
+		w=40;
+		h=50;
 		up=true;
 		pos = new PVector((parent.width), (parent.height/2-(h/2)));
-		speed=parent.loadImage("speed.png");
+		speed=parent.loadImage("light.png");
 	}
 	void render() 
 	{
