@@ -114,7 +114,19 @@ public class Test extends PApplet {
 	        }
 	    }
 	}
-	
+	public void fueldetect()
+	{
+		for(int i= fuels.size()-1; i>=0;i--)
+	    {
+	    	Fuelpowerup go = fuels.get(i);  
+	    	if (go.pos.dist(astro.pos) < astro.halfW + go.w/2)
+	        {
+	            // Do some casting
+	    		astro.fuel+=50;
+	    		fuels.remove(go);
+	        }
+	    }
+	}
 	public void lightdetect()
 	{
 		for(int i= lights.size()-1; i>=0;i--)
@@ -272,6 +284,7 @@ public class Test extends PApplet {
 	    //topwalldetect();
 	    //bottomwalldetect();
 	    speeddetect();
+	    fueldetect();
 	    lightdetect();
 	}
 	

@@ -12,7 +12,7 @@ public class SpeedPowerup {
 	SpeedPowerup(PApplet p)
 	{
 		parent=p;
-		w=50;
+		w=60;
 		h=80;
 		up=true;
 		pos = new PVector((parent.width), (parent.height/2-(h/2)));
