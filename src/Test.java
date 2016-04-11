@@ -29,6 +29,7 @@ public class Test extends PApplet {
 		background(0);
 		state=1;
 		change=false;
+		change1=false;
 		count=0;
 		count1=0;
 		wallspawn=100;
@@ -126,6 +127,21 @@ public class Test extends PApplet {
 	    		fuels.remove(go);
 	        }
 	    }
+		if (change1==true)
+		{
+			count1++;
+			if(count1<600)
+			{
+				background(255);
+				fill(0);
+				ellipse(astro.pos.x,astro.pos.y+astro.halfW,250,250);
+			}
+			if(count1>300)
+			{
+				change1=false;
+				count1=0;
+			}
+		}
 	}
 	public void lightdetect()
 	{
@@ -136,6 +152,7 @@ public class Test extends PApplet {
 	        {
 	            // Do some casting
 	    		lights.remove(go);
+	    		change1=true;
 	        }
 	    }
 	}
@@ -202,7 +219,11 @@ public class Test extends PApplet {
 	}
 	public void game()
 	{
-		
+		//topwalldetect();
+	    //bottomwalldetect();
+	    speeddetect();
+	    fueldetect();
+	    lightdetect();
 	    if (frameCount % wallspawn == 0)
 	    {
 	    	//initialise top wall
@@ -232,13 +253,19 @@ public class Test extends PApplet {
 	    if (frameCount % 600 == 0)
 	    {
 	    	//initialise speedPowerup
-	    	SpeedPowerup speed = null;
-		    speed = new SpeedPowerup(this);
-		    speeds.add(speed);
-	    	
-		    //Light lite = null;
-		    //lite = new Light(this);
-		    //lights.add(lite);
+	    	int x=(int)random(0,1);
+	    	if(x==1)
+	    	{
+	    		SpeedPowerup speed = null;
+	    		speed = new SpeedPowerup(this);
+	    		speeds.add(speed);
+	    	}
+	    	if(x==0)
+	    	{
+	    		Light lite = null;
+	    		lite = new Light(this);
+	    		lights.add(lite);
+	    	}
 		    
 		    
 	    }
@@ -281,11 +308,7 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
-	    //topwalldetect();
-	    //bottomwalldetect();
-	    speeddetect();
-	    fueldetect();
-	    lightdetect();
+	    
 	}
 	
 	
