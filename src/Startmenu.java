@@ -9,6 +9,7 @@ public class Startmenu {
 	boolean up;
 	PVector text1;
 	PVector text2;
+	PVector text3;
 	Startmenu(PApplet p)
 	{
 		parent=p;
@@ -16,6 +17,7 @@ public class Startmenu {
 		pos = new PVector(0, 0);
 		text1 = new PVector(-150, parent.height/3);
 		text2 = new PVector(parent.width, (parent.height/2));
+		text3 = new PVector(250,(parent.height/2)+100);
 		pos.x=parent.width/2;
 		pos.y=(float) (parent.height/1.35);
 	}
@@ -29,8 +31,12 @@ public class Startmenu {
 		parent.fill(130);
 		parent.rect((float) (parent.width/1.75)-75,(parent.height/2)-68,parent.width, 94);
 		parent.fill(255);
-		parent.text("Hoppers", text2.x, (float) (parent.height/2));
-		
+		parent.text("Hoppers", text2.x, text2.y);
+		parent.textSize(32);
+		parent.fill(130);
+		parent.rect(0,text3.y+10,parent.width,-40);
+		parent.fill(255);
+		parent.text("Press any key to start", text3.x, text3.y);
 		parent.image(normal,pos.x-50,pos.y,100,110);
 	}
 	void update()
