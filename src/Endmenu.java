@@ -22,7 +22,7 @@ public class Endmenu {
 		pos.x=parent.width/2;
 		w=100;
 		h=110;
-		pos.y=(float) (parent.height/1.35);
+		pos.y=(float) (parent.height/1.35)+50;
 	}
 	void render()
 	{
@@ -41,6 +41,11 @@ public class Endmenu {
 		parent.stroke(0);
 		parent.text("Game", text1.x, text1.y);
 		parent.text("Over", text2.x, text1.y+100);
+		parent.fill(190);
+		parent.rect(0,(parent.height)-280, parent.width, 40);
+		parent.fill(255);
+		parent.textSize(32);
+		parent.text("click character to restart",200,(parent.height-250));
 		
 		parent.image(normal,pos.x,pos.y,w,h);
 	}
@@ -55,11 +60,11 @@ public class Endmenu {
 		{	
 			text2.x-=2;
 		}
-		if(pos.y<parent.height/1.35-80)
+		if(pos.y<parent.height/1.35+50-60)
 		{
 			up=false;
 		}
-		if(pos.y>parent.height/1.35+80)
+		if(pos.y>parent.height/1.35+50+60)
 		{
 			up=true;
 		}
