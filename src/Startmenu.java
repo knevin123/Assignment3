@@ -29,7 +29,7 @@ public class Startmenu {
 		parent.fill(130);
 		parent.rect((float) (parent.width/1.75)-75,(parent.height/2)-68,parent.width, 94);
 		parent.fill(255);
-		parent.text("Hoopers", text2.x, (float) (parent.height/2));
+		parent.text("Hoppers", text2.x, (float) (parent.height/2));
 		
 		parent.image(normal,pos.x-50,pos.y,100,110);
 	}
@@ -38,11 +38,11 @@ public class Startmenu {
 		pos.x++;
 		if(text1.x<parent.width/4)
 		{
-			text1.x++;
+			text1.x+=2;
 		}
 		if(text2.x>parent.width/1.75)
 		{	
-			text2.x--;
+			text2.x-=2;
 		}
 		if(pos.y<parent.height/1.35-80)
 		{

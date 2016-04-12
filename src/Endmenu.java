@@ -8,6 +8,8 @@ public class Endmenu {
 	PImage normal;
 	PVector pos;
 	boolean up;
+	float w;
+	float h;
 	PVector text1;
 	PVector text2;
 	Endmenu(PApplet p)
@@ -18,6 +20,8 @@ public class Endmenu {
 		text1 = new PVector(-150, parent.height/3);
 		text2 = new PVector(parent.width, (parent.height/2));
 		pos.x=parent.width/2;
+		w=100;
+		h=110;
 		pos.y=(float) (parent.height/1.35);
 	}
 	void render()
@@ -38,7 +42,7 @@ public class Endmenu {
 		parent.text("Game", text1.x, text1.y);
 		parent.text("Over", text2.x, text1.y+100);
 		
-		parent.image(normal,pos.x-50,pos.y,100,110);
+		parent.image(normal,pos.x,pos.y,w,h);
 	}
 	void update()
 	{

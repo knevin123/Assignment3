@@ -78,20 +78,47 @@ public class Test extends PApplet {
 	    	if(astro.fuel<0)
 	    	{
 	    		state=3;
+	    		fuels.clear();
+	    		lights.clear();
+	    		speeds.clear();
+	    		botwalls.clear();
+	    		topwalls.clear();
 	    	}
 	    }
 	    if(state==3)
 	    {
 	    	endmenu();
+	    	restart();
 	    }
 	    
 	    
+	}
+	public void restart()
+	{
+		if(state==3)
+		{
+			if(mousePressed)
+			{
+				if(mouseX>end.pos.x && mouseX<end.pos.x+end.w)
+				{
+					if(mouseY>end.pos.y && mouseY<end.pos.y+end.h)
+					{
+						state=1;
+					}
+				
+				}
+			}
+		}
 	}
 	public void topwalldetect()
 	{
 		for(int i= topwalls.size()-1; i>=0;i--)
 	    {
-	    	Walls go = topwalls.get(i);  
+	    	Walls go = topwalls.get(i); 
+	    	if(go.wallpos.x<0)
+	    	{
+	    		topwalls.remove(go);
+	    	}
 	        if(astro.pos.y<go.h)
 	        {
 	        	if((astro.pos.x+astro.w/2-10)>go.wallpos.x  && (astro.pos.x+astro.w/2-10)<(go.wallpos.x+go.w) || (astro.pos.x-astro.w/2+5)>go.wallpos.x  && (astro.pos.x-astro.w/2+5)<(go.wallpos.x+go.w))
@@ -108,6 +135,10 @@ public class Test extends PApplet {
 			Bottomwall go = botwalls.get(i); 
 	        if(astro.pos.y+astro.w>height-go.h)
 	        {
+	        	if(go.wallpos.x<0)
+		    	{
+		    		botwalls.remove(go);
+		    	}
 	        	if(astro.pos.x-astro.w/2>go.wallpos.x && astro.pos.x-astro.w/2<(go.wallpos.x)+go.w || astro.pos.x+astro.w/2-15>go.wallpos.x && astro.pos.x+astro.w/2-15<(go.wallpos.x)+go.w)
 	        	{
 	        		astro.fuel=0;        	
@@ -120,11 +151,33 @@ public class Test extends PApplet {
 		for(int i= fuels.size()-1; i>=0;i--)
 	    {
 	    	Fuelpowerup go = fuels.get(i);  
+	    	if(go.pos.x<0)
+	    	{
+	    		fuels.remove(go);
+	    	}
 	    	if (go.pos.dist(astro.pos) < astro.halfW + go.w/2)
 	        {
 	            // Do some casting
 	    		astro.fuel+=50;
 	    		fuels.remove(go);
+	        }
+	    }
+		
+	}
+	public void lightdetect()
+	{
+		for(int i= lights.size()-1; i>=0;i--)
+	    {
+	    	Light go = lights.get(i);
+	    	if(go.pos.x<0)
+	    	{
+	    		lights.remove(go);
+	    	}
+	    	if (go.pos.dist(astro.pos) < astro.halfW + go.w/2)
+	        {
+	            // Do some casting
+	    		lights.remove(go);
+	    		change1=true;
 	        }
 	    }
 		if (change1==true)
@@ -143,25 +196,16 @@ public class Test extends PApplet {
 			}
 		}
 	}
-	public void lightdetect()
-	{
-		for(int i= lights.size()-1; i>=0;i--)
-	    {
-	    	Light go = lights.get(i);  
-	    	if (go.pos.dist(astro.pos) < astro.halfW + go.w/2)
-	        {
-	            // Do some casting
-	    		lights.remove(go);
-	    		change1=true;
-	        }
-	    }
-	}
 	
 	public void speeddetect()
 	{
 		for(int i= speeds.size()-1; i>=0;i--)
 	    {
-	    	SpeedPowerup go = speeds.get(i);  
+	    	SpeedPowerup go = speeds.get(i);
+	    	if(go.pos.x<0)
+	    	{
+	    		speeds.remove(go);
+	    	}
 	        if(astro.pos.y<go.pos.y+(go.h/2) && astro.pos.y>go.pos.y-(go.h/2))
 	        {
 	        	if((astro.pos.x+astro.w/2-10)>go.pos.x  && (astro.pos.x+astro.w/2-10)<(go.pos.x+go.w) || (astro.pos.x-astro.w/2+5)>go.pos.x  && (astro.pos.x-astro.w/2+5)<(go.pos.x+go.w))
@@ -263,7 +307,7 @@ public class Test extends PApplet {
 	    if (frameCount % 600 == 0)
 	    {
 	    	//initialise speedPowerup
-	    	int x=(int)random(0,1);
+	    	int x=(int)random(-1,2);
 	    	if(x==1)
 	    	{
 	    		SpeedPowerup speed = null;
