@@ -50,6 +50,10 @@ class Astro
 		}
 		pos.y+=2.5;
 		elapsed ++;
+		if(fuel>100)
+		{
+			fuel=100;
+		}
 	}
 	
 	void render()

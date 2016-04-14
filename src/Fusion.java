@@ -2,21 +2,21 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
-public class Light {
+public class Fusion {
 	PApplet parent;
 	PVector pos;
 	int w;
 	int h;
 	PImage speed;
 	boolean up;
-	Light(PApplet p)
+	Fusion (PApplet p)
 	{
 		parent=p;
 		w=70;
 		h=60;
 		up=true;
 		pos = new PVector((parent.width), (parent.height/2-(h/2)));
-		speed=parent.loadImage("eye.png");
+		speed=parent.loadImage("fusion.png");
 	}
 	void render() 
 	{

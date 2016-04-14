@@ -27,7 +27,7 @@ public class Startmenu {
 		parent.fill(130);
 		parent.rect(0,parent.height/3-64, (float) (parent.width/1.5), 94);
 		parent.fill(255);
-		parent.text("Space", text1.x, text1.y);
+		parent.text("Astro", text1.x, text1.y);
 		parent.fill(130);
 		parent.rect((float) (parent.width/1.75)-75,(parent.height/2)-68,parent.width, 94);
 		parent.fill(255);
