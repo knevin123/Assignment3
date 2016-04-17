@@ -16,6 +16,8 @@ public class Test extends PApplet {
 	ArrayList<Fuelpowerup> fuels = new ArrayList<Fuelpowerup>();
 	ArrayList<Astro> ast = new ArrayList<Astro>();
 	float k;
+	int current;
+	int high;
 	//int for game state 1=startmenu 2=game 3=restart menu
 	int state;
 	int count;
@@ -33,6 +35,8 @@ public class Test extends PApplet {
 		change1=false;
 		count=0;
 		count1=0;
+		high=0;
+		current=0;
 		wallspawn=100;
 		wallspeed=(float) 1.5;
 		for(int i=0; i<200;i++)
@@ -96,6 +100,7 @@ public class Test extends PApplet {
 	    if(state==3)
 	    {
 	    	endmenu();
+	    	current=0;
 	    	restart();
 	    }
 	    
@@ -363,6 +368,7 @@ public class Test extends PApplet {
 		    Bottomwall bottomwall = null;
 		    bottomwall = new Bottomwall(this,wallspeed);
 		    botwalls.add(bottomwall);
+		    current+=1;
 	    }
 	    if (frameCount % (wallspawn*4) == 0)
 	    {
@@ -450,7 +456,17 @@ public class Test extends PApplet {
 	        go.update();
 	        go.render();
 	    }
-	    
+	    fill(125,0,125);
+	    rect((width/2-180),0,400,45);
+	    textSize(32);
+	    fill(255);
+	    text("Score:"+current,width/2-160,36);
+	    text("Highscore:"+high,width/2-5,36);
+	    if(current>high)
+	    {
+	    	high=current;
+	    }
+	   
 	}
 	
 	
