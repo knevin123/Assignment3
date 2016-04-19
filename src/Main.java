@@ -3,8 +3,11 @@ import java.util.ArrayList;
 
 import processing.core.*;
 
-public class Test extends PApplet {
-	
+public class Main extends PApplet {
+	static public void main(String args[])
+	{
+		PApplet.main(new String[] { "Main" });
+	}
 	Startmenu start;
 	Endmenu end;
 	ArrayList<Stars> star =new ArrayList<Stars>();
@@ -77,6 +80,8 @@ public class Test extends PApplet {
 			    astr = new Astro(width/2, height/2, 100, this);
 			    ast.add(astr);
 	    		state=2;
+	    		change=false;
+	    		change1=false;
 	    	}
 	    }
 	    if(state==2)
