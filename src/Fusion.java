@@ -3,6 +3,7 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 public class Fusion {
+	//fields
 	PApplet parent;
 	PVector pos;
 	int w;
@@ -11,6 +12,7 @@ public class Fusion {
 	boolean up;
 	Fusion (PApplet p)
 	{
+		//set up image
 		parent=p;
 		w=70;
 		h=60;
@@ -18,11 +20,13 @@ public class Fusion {
 		pos = new PVector((parent.width), (parent.height/2-(h/2)));
 		speed=parent.loadImage("fusion.png");
 	}
+	//render image
 	void render() 
 	{
 		parent.image(speed, pos.x,pos.y,w, h);
 
 	}
+	//move image
 	void update()
 	{
 		pos.x-=2;

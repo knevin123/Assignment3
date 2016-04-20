@@ -11,6 +11,7 @@ public class Bottomwall {
 	
 	Bottomwall(PApplet p,float s)
 	{
+		//set width and speeds and height
 		parent=p;
 		wallpos = new PVector(0, 0);
 		wallpos.y=parent.height;
@@ -23,11 +24,13 @@ public class Bottomwall {
 	
 	void update()
 	{	
+		//update by speed
 		wallpos.x-=speed;
 	}
 	
 	void render()
 	{
+		//draw square
 		parent.fill(255);
 		parent.rect(wallpos.x,(parent.height-h),w,wallpos.y);
 	}

@@ -3,6 +3,7 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 public class SpeedPowerup {
+	//fields
 	PApplet parent;
 	PVector pos;
 	int w;
@@ -11,6 +12,7 @@ public class SpeedPowerup {
 	boolean up;
 	SpeedPowerup(PApplet p)
 	{
+		//set up image
 		parent=p;
 		w=60;
 		h=80;
@@ -18,11 +20,13 @@ public class SpeedPowerup {
 		pos = new PVector((parent.width), (parent.height/2-(h/2)));
 		speed=parent.loadImage("speed.png");
 	}
+	//render image
 	void render() 
 	{
 		parent.image(speed, pos.x,pos.y,w, h);
 
 	}
+	//update image
 	void update()
 	{
 		pos.x-=2;

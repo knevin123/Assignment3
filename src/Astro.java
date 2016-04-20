@@ -31,6 +31,7 @@ class Astro
 		this.halfW = w * 0.5f;
 		this.theta = 0.0f;
 		fuel=1000;
+		//load images
 		normal=parent.loadImage("sprite1.png");
 		jump=parent.loadImage("sprite2.png");
 		c=parent.color(0,255,0);
@@ -40,6 +41,7 @@ class Astro
 	
 	void update()
 	{	
+		//move character when w is pressed
 		if (parent.keyPressed)
 		{
 			if (parent.key=='w' /*&& elapsed > 8*/)
@@ -50,6 +52,7 @@ class Astro
 		}
 		pos.y+=2.5;
 		elapsed ++;
+		//ensure that fuel is always below 100
 		if(fuel>100)
 		{
 			fuel=100;
@@ -58,6 +61,7 @@ class Astro
 	
 	void render()
 	{
+		//render images depending on button press
 		if (parent.keyPressed)
 		{
 			if (parent.key=='w')
@@ -69,6 +73,7 @@ class Astro
 		
 		
 	} 
+	//fuel bar changes colour at different values
 	void fuel()
 	{
 		if(fuel<20)

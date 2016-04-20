@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import processing.core.*;
 
 public class Main extends PApplet {
+	//needed to run a jar file 
 	static public void main(String args[])
 	{
 		PApplet.main(new String[] { "Main" });
 	}
+	//maing a startmenu and endmenu object
 	Startmenu start;
 	Endmenu end;
+	//array lists
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
 	ArrayList<Bottomwall> botwalls = new ArrayList<Bottomwall>();
@@ -18,36 +21,49 @@ public class Main extends PApplet {
 	ArrayList<Fusion> fuses =new ArrayList<Fusion>();
 	ArrayList<Fuelpowerup> fuels = new ArrayList<Fuelpowerup>();
 	ArrayList<Astro> ast = new ArrayList<Astro>();
+	//fuel y-position
 	float k;
+	//scores
 	int current;
 	int high;
 	//int for game state 1=startmenu 2=game 3=restart menu
 	int state;
+	//counter for powerdowns
 	int count;
 	int count1;
+	//wall spawn timer
 	int wallspawn;
+	//wall speed
 	float wallspeed;
+	//indicator for start of powerdown
 	boolean change;
 	boolean change1;
+	//setup
 	public void setup() 
 	{
 		size(800,800);
 		background(0);
+		//set to start menu state
 		state=1;
+		//set powerdowns to off
 		change=false;
 		change1=false;
 		count=0;
 		count1=0;
+		//set scores
 		high=0;
 		current=0;
+		//set wallspawn and speed
 		wallspawn=100;
 		wallspeed=(float) 1.5;
+		//initilise stars for background
 		for(int i=0; i<200;i++)
 		{
 			Stars stars = null;
 		    stars = new Stars(this);
 		    star.add(stars);
 		}
+		//intialise start and end menus ready to be called
 		start = new Startmenu(this);
 		end = new Endmenu(this);
 	}
@@ -65,31 +81,40 @@ public class Main extends PApplet {
 	public void draw() 
 	{
 		background(0);
+		//always render stars
 	    for(int i= star.size()-1; i>=0;i--)
 	    {
 	    	Stars go = star.get(i);  
 	        go.update();
 	        go.render();
 	    }
+	    //if startmenu state
 	    if(state==1)
 	    {
+	    	//render start menu 
 	    	startmenu();
+	    	//when pressed change states create character
 	    	if(keyPressed)
 	    	{
 	    		Astro astr = null;
 			    astr = new Astro(width/2, height/2, 100, this);
 			    ast.add(astr);
 	    		state=2;
+	    		//reset powerups
 	    		change=false;
 	    		change1=false;
 	    	}
 	    }
+	    //if game state
 	    if(state==2)
 	    {
+	    	//render game situation
 	    	game();
+	    	//check astronaut
 	    	for(int i= ast.size()-1; i>=0;i--)
 		    {
 		    	Astro go = ast.get(i);  
+		    	//if fuel is less than 0 clear all array list and change state
 		    	if(go.fuel<0)
 		    	{
 		    		fuels.clear();
@@ -102,8 +127,10 @@ public class Main extends PApplet {
 		    	}
 		    }
 	    }
+	    //if endmenu state 
 	    if(state==3)
 	    {
+	    	//restart game and score
 	    	endmenu();
 	    	current=0;
 	    	restart();
@@ -111,8 +138,10 @@ public class Main extends PApplet {
 	    
 	    
 	}
+	//game restart
 	public void restart()
 	{
+		//detect if you press the sprite to return to main menu
 		if(state==3)
 		{
 			if(mousePressed)
@@ -129,6 +158,7 @@ public class Main extends PApplet {
 			}
 		}
 	}
+	//top wall detect
 	public void topwalldetect()
 	{
 		for(int i= topwalls.size()-1; i>=0;i--)
@@ -137,10 +167,12 @@ public class Main extends PApplet {
 			{
 				Astro other = ast.get(j);
 				Walls go = topwalls.get(i); 
+				//if walls off screen its removed
 				if(go.wallpos.x+go.w<0)
 				{
 					topwalls.remove(go);
 				}
+				//if it hits the astronaut his fuel is 0
 				if(other.pos.y<go.h)
 				{
 					if((other.pos.x+other.w/2-10)>go.wallpos.x  && (other.pos.x+other.w/2-10)<(go.wallpos.x+go.w) || (other.pos.x-other.w/2+5)>go.wallpos.x  && (other.pos.x-other.w/2+5)<(go.wallpos.x+go.w))
@@ -151,6 +183,7 @@ public class Main extends PApplet {
 			}
 	    }
 	}
+	//bottom wall detect
 	public void bottomwalldetect()
 	{
 		for(int i= botwalls.size()-1; i>=0;i--)
@@ -161,10 +194,12 @@ public class Main extends PApplet {
 				Bottomwall go = botwalls.get(i); 
 		        if(other.pos.y+other.w>height-go.h)
 		        {
+		        	//if walls off screen its removed
 		        	if(go.wallpos.x<0)
 			    	{
 			    		botwalls.remove(go);
 			    	}
+		        	//if it hits the astronaut his fuel is 0
 		        	if(other.pos.x-other.w/2>go.wallpos.x && other.pos.x-other.w/2<(go.wallpos.x)+go.w || other.pos.x+other.w/2-15>go.wallpos.x && other.pos.x+other.w/2-15<(go.wallpos.x)+go.w)
 		        	{
 		        		other.fuel=0;        	
@@ -173,6 +208,7 @@ public class Main extends PApplet {
 			}
 	    }
 	}
+	//fuel detect
 	public void fueldetect()
 	{
 		for(int i= fuels.size()-1; i>=0;i--)
@@ -180,14 +216,16 @@ public class Main extends PApplet {
 			for(int j=ast.size()-1;j>=0;j--)
 			{
 				Astro other = ast.get(j);
-		    	Fuelpowerup go = fuels.get(i);  
+		    	Fuelpowerup go = fuels.get(i); 
+		    	//if fuels off screen its removed
 		    	if(go.pos.x<0)
 		    	{
 		    		fuels.remove(go);
 		    	}
+		    	//circular detect for fuel and astro
 		    	if (go.pos.dist(other.pos) < other.halfW + go.h/2)
 		        {
-		            // Do some casting
+		    		//add fuel and remove
 		    		other.fuel+=50;
 		    		fuels.remove(go);
 		        }
@@ -195,6 +233,7 @@ public class Main extends PApplet {
 	    }
 		
 	}
+	//fusion detect
 	public void fusiondetect()
 	{
 		for(int i= fuses.size()-1; i>=0;i--)
@@ -203,19 +242,22 @@ public class Main extends PApplet {
 			{
 				Astro other = ast.get(j);
 		    	Fusion go = fuses.get(i);
+		    	//remove fuse powerdown if off screen
 		    	if(go.pos.x<0)
 		    	{
 		    		fuses.remove(go);
 		    	}
+		    	//if touches astro remove and start powerdown
 		    	if (go.pos.dist(other.pos) < other.halfW + go.w/2)
 		        {
-		            // Do some casting
+		            
 		    		fuses.remove(go);
 		    		//change1=true;
 		    		change=true;
 		    		change1=true;
 		    		wallspeed=3;
 	        		wallspawn=50;
+	        		//changes speed sof walls
 	        		for(int x= topwalls.size()-1; x>=0;x--)
 	        	    {
 	        	    	Walls go1 = topwalls.get(x);  
@@ -235,6 +277,7 @@ public class Main extends PApplet {
 			}
 	    }
 	}
+	//light detect
 	public void lightdetect()
 	{
 		for(int i= lights.size()-1; i>=0;i--)
@@ -243,10 +286,12 @@ public class Main extends PApplet {
 			{
 				Astro other = ast.get(j);
 		    	Light go = lights.get(i);
+		    	//remove when off screen
 		    	if(go.pos.x<0)
 		    	{
 		    		lights.remove(go);
 		    	}
+		    	//if touch start powerdown
 		    	if (go.pos.dist(other.pos) < other.halfW + go.w/2)
 		        {
 		            // Do some casting
@@ -255,11 +300,13 @@ public class Main extends PApplet {
 		        }
 			}
 	    }
+		//timer for powerdown
 		if (change1==true)
 		{
 			count1++;
 			if(count1<600)
 			{
+				//make background white and add circle
 				background(255);
 				fill(0);
 				for(int j=ast.size()-1;j>=0;j--)
@@ -275,19 +322,21 @@ public class Main extends PApplet {
 			}
 		}
 	}
-	
+	//speed detect
 	public void speeddetect()
-	{
+	{	
 		for(int i= speeds.size()-1; i>=0;i--)
 	    {
 			for(int j=ast.size()-1;j>=0;j--)
 			{
 				Astro other = ast.get(j);
 		    	SpeedPowerup go = speeds.get(i);
+		    	//remove if past screen
 		    	if(go.pos.x<0)
 		    	{
 		    		speeds.remove(go);
 		    	}
+		    	//square detection
 		        if(other.pos.y<go.pos.y+(go.h/2) && other.pos.y>go.pos.y-(go.h/2))
 		        {
 		        	if((other.pos.x+other.w/2-10)>go.pos.x  && (other.pos.x+other.w/2-10)<(go.pos.x+go.w) || (other.pos.x-other.w/2+5)>go.pos.x  && (other.pos.x-other.w/2+5)<(go.pos.x+go.w))
@@ -297,6 +346,7 @@ public class Main extends PApplet {
 		        		speeds.remove(go);
 		        		wallspeed=3;
 		        		wallspawn=50;
+		        		//change speeds and start timer
 		        		for(int x= topwalls.size()-1; x>=0;x--)
 		        	    {
 		        	    	Walls go1 = topwalls.get(x);  
@@ -317,9 +367,11 @@ public class Main extends PApplet {
 		        }
 			}
 	    }
+		//check timer
 		if (change==true)
 		{
 			count++;
+			//when time passes reset speeds
 			if(count>300)
 			{
 				for(int j= topwalls.size()-1; j>=0;j--)
@@ -344,25 +396,29 @@ public class Main extends PApplet {
 			}
 		}
 	}
+	//render start menu
 	public void startmenu()
 	{
 		start.render();
 	    start.update();
 	}
+	//render end menu
 	public void endmenu()
 	{
 		end.render();
 		end.update();
 	}
+	//running game class
 	public void game()
 	{
+		//wall and powerdown detects
 		topwalldetect();
 	    bottomwalldetect();
 		fusiondetect();
 	    speeddetect();
 	    fueldetect();
 	    lightdetect();
-	    
+	    //wall spawn                                                              
 	    if (frameCount % wallspawn == 0)
 	    {
 	    	//initialise top wall
@@ -373,8 +429,10 @@ public class Main extends PApplet {
 		    Bottomwall bottomwall = null;
 		    bottomwall = new Bottomwall(this,wallspeed);
 		    botwalls.add(bottomwall);
+		    //score changes every time a wall spawns
 		    current+=1;
 	    }
+	    //fuel spawns every 4 walls
 	    if (frameCount % (wallspawn*4) == 0)
 	    {
 	    	Walls go = topwalls.get(topwalls.size()-1);  
@@ -384,6 +442,7 @@ public class Main extends PApplet {
 	    	fuel = new Fuelpowerup(this,k,wallspeed);
         	fuels.add(fuel);
 	    }
+	    // a random powerdown spawns every 600 frames
 	    if (frameCount % 600 == 0)
 	    {
 	    	//initialise speedPowerup
@@ -409,6 +468,7 @@ public class Main extends PApplet {
 		    
 		    
 	    }
+	    //fuel is reduced every 25 frames
 		if(frameCount % 25 == 0)
 		{
 			for(int i= ast.size()-1; i>=0;i--)
@@ -417,6 +477,7 @@ public class Main extends PApplet {
 		        go.fuel-=3;
 		    }
 		}
+		//render powerdowns
 	    for(int i= speeds.size()-1; i>=0;i--)
 	    {
 	    	SpeedPowerup go = speeds.get(i);  
@@ -435,12 +496,14 @@ public class Main extends PApplet {
 	        go.update();
 	        go.render();
 	    }
+	    //render fuel
 	    for(int i= fuels.size()-1; i>=0;i--)
 	    {
 	    	Fuelpowerup go = fuels.get(i);  
 	        go.update();
 	        go.render();
 	    }
+	    //render astronaut
 	    for(int i= ast.size()-1; i>=0;i--)
 	    {
 	    	Astro go = ast.get(i);  
@@ -448,6 +511,7 @@ public class Main extends PApplet {
 	        go.render();
 	        go.fuel();
 	    }
+	    //render walls
 	    for(int i= topwalls.size()-1; i>=0;i--)
 	    {
 	    	Walls go = topwalls.get(i);  
@@ -461,12 +525,14 @@ public class Main extends PApplet {
 	        go.update();
 	        go.render();
 	    }
+	    //score board
 	    fill(125,0,125);
 	    rect((width/2-180),0,400,45);
 	    textSize(32);
 	    fill(255);
 	    text("Score:"+current,width/2-160,36);
 	    text("Highscore:"+high,width/2-5,36);
+	    //check for high score
 	    if(current>high)
 	    {
 	    	high=current;

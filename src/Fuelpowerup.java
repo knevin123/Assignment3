@@ -3,6 +3,7 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 public class Fuelpowerup {
+	//fields
 	PApplet parent;
 	PVector pos;
 	int w;
@@ -12,6 +13,7 @@ public class Fuelpowerup {
 	float speed;
 	Fuelpowerup(PApplet p,float y,float x)
 	{
+		//set up image
 		parent=p;
 		w=25;
 		h=40;
@@ -20,11 +22,13 @@ public class Fuelpowerup {
 		pos = new PVector((parent.width), y);
 		fuel=parent.loadImage("fuel.png");
 	}
+	//render image
 	void render() 
 	{
 		parent.image(fuel, pos.x,pos.y,w, h);
 
 	}
+	//move image
 	void update()
 	{
 		pos.x-=speed;

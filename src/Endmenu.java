@@ -4,6 +4,7 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 public class Endmenu {
+	//fields
 	PApplet parent;
 	PImage normal;
 	PVector pos;
@@ -12,8 +13,10 @@ public class Endmenu {
 	float h;
 	PVector text1;
 	PVector text2;
+	
 	Endmenu(PApplet p)
 	{
+		//set up text and square images
 		parent=p;
 		normal=parent.loadImage("sprite2.png");
 		pos = new PVector(0, 0);
@@ -26,6 +29,7 @@ public class Endmenu {
 	}
 	void render()
 	{
+		//render text
 		parent.textSize(64);
 		parent.fill(190);
 		parent.ellipse(parent.width/2,parent.height/3+20, 400,400);
@@ -46,11 +50,12 @@ public class Endmenu {
 		parent.fill(255);
 		parent.textSize(32);
 		parent.text("click character to restart",200,(parent.height-250));
-		
+		//add images
 		parent.image(normal,pos.x,pos.y,w,h);
 	}
 	void update()
 	{
+		//move character along screen
 		pos.x++;
 		if(text1.x<(parent.width/4)+75)
 		{

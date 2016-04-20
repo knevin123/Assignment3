@@ -3,6 +3,7 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 public class Startmenu {
+	//fields
 	PApplet parent;
 	PImage normal;
 	PVector pos;
@@ -12,6 +13,7 @@ public class Startmenu {
 	PVector text3;
 	Startmenu(PApplet p)
 	{
+		//set up text and square images
 		parent=p;
 		normal=parent.loadImage("sprite2.png");
 		pos = new PVector(0, 0);
@@ -23,6 +25,7 @@ public class Startmenu {
 	}
 	void render()
 	{
+		//render text
 		parent.textSize(64);
 		parent.fill(130);
 		parent.rect(0,parent.height/3-64, (float) (parent.width/1.5), 94);
@@ -37,8 +40,10 @@ public class Startmenu {
 		parent.rect(0,text3.y+10,parent.width,-40);
 		parent.fill(255);
 		parent.text("Press any key to start", text3.x, text3.y);
+		//render character
 		parent.image(normal,pos.x-50,pos.y,100,110);
 	}
+	//update character
 	void update()
 	{
 		pos.x++;
