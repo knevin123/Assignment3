@@ -7,3 +7,6 @@ You have fuel in your suit and if you run out you lose.
 You collect fuel tanks to increase fuel in order to continue.
 Full menu with instructions.
 You also have powerdowns which hinder your progress.
+A video for a trailer/making of for my game can be found at:
+https://www.youtube.com/watch?v=hWMH6bSjlO4 . 
+A jar file can be found in the out folder if you wish to run that.
