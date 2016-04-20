@@ -46,6 +46,7 @@ public class Main extends PApplet {
 		minim = new Minim(this);
 		AudioPlayer audio;
 		audio = minim.loadFile("music.mp3");
+		audio.setGain(-20);
 		audio.play();
 		size(800,800);
 		background(0);
