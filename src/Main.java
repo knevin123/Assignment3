@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
-
 import processing.core.*;
+import ddf.minim.*;
 
 public class Main extends PApplet {
 	//needed to run a jar file 
@@ -9,9 +9,11 @@ public class Main extends PApplet {
 	{
 		PApplet.main(new String[] { "Main" });
 	}
-	//maing a startmenu and endmenu object
+	//making a startmenu and endmenu object
 	Startmenu start;
 	Endmenu end;
+	//audio background sound
+	Minim minim;
 	//array lists
 	ArrayList<Stars> star =new ArrayList<Stars>();
 	ArrayList<Walls> topwalls = new ArrayList<Walls>();
@@ -41,6 +43,10 @@ public class Main extends PApplet {
 	//setup
 	public void setup() 
 	{
+		minim = new Minim(this);
+		AudioPlayer audio;
+		audio = minim.loadFile("music.mp3");
+		audio.play();
 		size(800,800);
 		background(0);
 		//set to start menu state
